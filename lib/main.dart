@@ -1,6 +1,6 @@
-import 'package:expense_tracker/expanses.dart';
+import 'package:expense_tracker/widget/expanses.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MaterialApp(home: Expanses()));
+  runApp(const MaterialApp(home: Expanses()));
 }
