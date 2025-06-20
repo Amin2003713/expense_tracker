@@ -60,14 +60,10 @@ class _ExpansesState extends State<Expanses> {
     ),
     body: Column(
       children: [
+        Expanded(child: Chart(expences: Epanses)),
         Expanded(
           child: Epanses.isNotEmpty
-              ? Column(
-                  children: [
-                    Expanded(child: Chart(expences: Epanses)),
-                    ExpansesList(expanses: Epanses, remove: _removeExpanse),
-                  ],
-                )
+              ? ExpansesList(expanses: Epanses, remove: _removeExpanse)
               : Center(
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
