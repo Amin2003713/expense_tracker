@@ -59,7 +59,6 @@ class _ExpansesState extends State<Expanses> {
     ),
     body: Column(
       children: [
-        Text('data'),
         Expanded(
           child: Epanses.isNotEmpty
               ? ExpansesList(expanses: Epanses, remove: _removeExpanse)

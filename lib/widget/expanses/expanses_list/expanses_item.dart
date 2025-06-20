@@ -12,11 +12,6 @@ class ExpansesItem extends StatelessWidget {
     final colorScheme = theme.colorScheme;
 
     return Card(
-      elevation: 6,
-      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-      color: Color.fromARGB(18, 82, 75, 62),
-      shadowColor: Color.fromARGB(54, 82, 75, 62),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
         child: Column(
