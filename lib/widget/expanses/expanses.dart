@@ -1,3 +1,4 @@
+import 'package:expense_tracker/widget/chart/chart.dart';
 import 'package:expense_tracker/widget/expanses/Modals/AddExpanse/expanseModal.dart';
 import 'package:expense_tracker/widget/expanses/expanses_list/expanses_list.dart';
 import 'package:flutter/material.dart';
@@ -61,7 +62,12 @@ class _ExpansesState extends State<Expanses> {
       children: [
         Expanded(
           child: Epanses.isNotEmpty
-              ? ExpansesList(expanses: Epanses, remove: _removeExpanse)
+              ? Column(
+                  children: [
+                    Expanded(child: Chart(expences: Epanses)),
+                    ExpansesList(expanses: Epanses, remove: _removeExpanse),
+                  ],
+                )
               : Center(
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
