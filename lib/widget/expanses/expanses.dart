@@ -28,6 +28,27 @@ class _ExpansesState extends State<Expanses> {
     );
   }
 
+  void _removeExpanse(ExpansesDto dto) {
+    final index = Epanses.indexOf(dto);
+    setState(() {
+      Epanses.remove(dto);
+    });
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        duration: Duration(seconds: 30),
+        action: SnackBarAction(
+          label: 'Undo',
+          onPressed: () {
+            setState(() {
+              Epanses.insert(index, dto);
+            });
+          },
+        ),
+        content: Text('data'),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) => Scaffold(
     appBar: AppBar(
@@ -39,7 +60,23 @@ class _ExpansesState extends State<Expanses> {
     body: Column(
       children: [
         Text('data'),
-        Expanded(child: ExpansesList(expanses: Epanses)),
+        Expanded(
+          child: Epanses.isNotEmpty
+              ? ExpansesList(expanses: Epanses, remove: _removeExpanse)
+              : Center(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      const Text('add one?'),
+                      IconButton(
+                        onPressed: _openAddExpansesOverlay,
+                        icon: const Icon(Icons.add),
+                      ),
+                    ],
+                  ),
+                ),
+        ),
       ],
     ),
   );
