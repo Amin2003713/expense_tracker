@@ -15,6 +15,48 @@ class Expanses extends StatefulWidget {
 class _ExpansesState extends State<Expanses> {
   final List<ExpansesDto> Epanses = ExpansesDto.GetDummy();
 
+  Widget get mainContent {
+    final isLand = MediaQuery.of(context).orientation == Orientation.landscape;
+
+    var notEmptyCont = !isLand
+        ? Column(
+            children: [
+              Expanded(child: Chart(expences: Epanses)),
+              Expanded(
+                child: ExpansesList(expanses: Epanses, remove: _removeExpanse),
+              ),
+            ],
+          )
+        : Row(
+            children: [
+              Expanded(child: Chart(expences: Epanses)),
+              Expanded(
+                child: ExpansesList(expanses: Epanses, remove: _removeExpanse),
+              ),
+            ],
+          );
+
+    var emptyCont = Center(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          const Text('add one?'),
+          IconButton(
+            onPressed: _openAddExpansesOverlay,
+            icon: const Icon(Icons.add),
+          ),
+        ],
+      ),
+    );
+
+    return Column(
+      children: [
+        Expanded(child: Epanses.isNotEmpty ? notEmptyCont : emptyCont),
+      ],
+    );
+  }
+
   void addExpanse(ExpansesDto dto) {
     setState(() {
       Epanses.add(dto);
@@ -36,7 +78,7 @@ class _ExpansesState extends State<Expanses> {
     });
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        duration: Duration(seconds: 30),
+        duration: Duration(seconds: 3),
         action: SnackBarAction(
           label: 'Undo',
           onPressed: () {
@@ -53,32 +95,11 @@ class _ExpansesState extends State<Expanses> {
   @override
   Widget build(BuildContext context) => Scaffold(
     appBar: AppBar(
-      title: Text('Expanses Tracker'),
+      title: Text('expense Tracker'),
       actions: [
         IconButton(onPressed: _openAddExpansesOverlay, icon: Icon(Icons.add)),
       ],
     ),
-    body: Column(
-      children: [
-        Expanded(child: Chart(expences: Epanses)),
-        Expanded(
-          child: Epanses.isNotEmpty
-              ? ExpansesList(expanses: Epanses, remove: _removeExpanse)
-              : Center(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      const Text('add one?'),
-                      IconButton(
-                        onPressed: _openAddExpansesOverlay,
-                        icon: const Icon(Icons.add),
-                      ),
-                    ],
-                  ),
-                ),
-        ),
-      ],
-    ),
+    body: mainContent,
   );
 }

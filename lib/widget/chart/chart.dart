@@ -32,7 +32,7 @@ class Chart extends StatelessWidget {
   Widget build(BuildContext context) {
     var theme = MediaQuery.of(context);
     return Container(
-      margin: EdgeInsets.all(16),
+      margin: EdgeInsets.all(8),
       padding: EdgeInsets.symmetric(horizontal: 8, vertical: 16),
       width: double.infinity,
       decoration: BoxDecoration(
