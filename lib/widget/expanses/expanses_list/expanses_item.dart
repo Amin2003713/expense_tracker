@@ -15,8 +15,8 @@ class ExpansesItem extends StatelessWidget {
       elevation: 6,
       margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-      color: colorScheme.surface,
-      shadowColor: colorScheme.primary.withValues(alpha: 0.2),
+      color: Color.fromARGB(18, 82, 75, 62),
+      shadowColor: Color.fromARGB(54, 82, 75, 62),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
         child: Column(
@@ -38,7 +38,7 @@ class ExpansesItem extends StatelessWidget {
                     vertical: 6,
                   ),
                   decoration: BoxDecoration(
-                    color: colorScheme.primary.withOpacity(0.1),
+                    color: Color.fromARGB(54, 120, 100, 170),
                     borderRadius: BorderRadius.circular(8),
                   ),
                   child: Text(
@@ -53,7 +53,7 @@ class ExpansesItem extends StatelessWidget {
                 Row(
                   children: [
                     CircleAvatar(
-                      backgroundColor: colorScheme.secondary.withOpacity(0.1),
+                      backgroundColor: Color.fromARGB(54, 82, 75, 62),
                       radius: 16,
                       child: Icon(
                         CategoryIcons[expanses.category],

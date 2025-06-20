@@ -1,5 +1,5 @@
 import 'package:expense_tracker/models/expanses.dart';
-import 'package:expense_tracker/widget/expanses_list/expanses_item.dart';
+import 'package:expense_tracker/widget/expanses/expanses_list/expanses_item.dart';
 import 'package:flutter/cupertino.dart';
 
 class ExpansesList extends StatelessWidget {

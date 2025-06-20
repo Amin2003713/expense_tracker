@@ -50,5 +50,23 @@ class ExpansesDto {
       date: DateTime.now(),
       category: Categories.travel,
     ),
+    ExpansesDto(
+      title: 'flutter',
+      amount: 100.99,
+      date: DateTime.now(),
+      category: Categories.work,
+    ),
+    ExpansesDto(
+      title: 'Pizza',
+      amount: 100.12,
+      date: DateTime.now(),
+      category: Categories.food,
+    ),
+    ExpansesDto(
+      title: 'Sleep',
+      amount: 19.93,
+      date: DateTime.now(),
+      category: Categories.travel,
+    ),
   ];
 }
