@@ -65,6 +65,7 @@ class _ExpansesState extends State<Expanses> {
 
   void _openAddExpansesOverlay() {
     showModalBottomSheet(
+      useSafeArea: true,
       isScrollControlled: true,
       context: context,
       builder: (ctx) => NewExpanseModal(addExpanse: addExpanse),

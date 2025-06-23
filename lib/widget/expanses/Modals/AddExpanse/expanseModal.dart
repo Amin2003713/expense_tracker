@@ -1,4 +1,37 @@
-import 'package:flutter/material.dart';
+import 'dart:io';
+
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart'
+    show
+        AlertDialog,
+        BuildContext,
+        Column,
+        CrossAxisAlignment,
+        DropdownButton,
+        DropdownMenuItem,
+        EdgeInsets,
+        ElevatedButton,
+        Expanded,
+        Icon,
+        IconButton,
+        Icons,
+        InputDecoration,
+        MainAxisAlignment,
+        Navigator,
+        Padding,
+        Row,
+        SizedBox,
+        Spacer,
+        State,
+        StatefulWidget,
+        Text,
+        TextButton,
+        TextEditingController,
+        TextField,
+        TextInputType,
+        Widget,
+        showDatePicker,
+        showDialog;
 
 import '../../../../models/expanses.dart';
 
@@ -40,19 +73,33 @@ class _NewExpanseModal extends State<NewExpanseModal> {
         _selectedDate == null) {
       showDialog(
         context: context,
-        builder: (context) => AlertDialog(
-          title: Text('invalid inputs!'),
-          icon: Icon(Icons.error),
-          content: Text('insure u have entered all write'),
-          actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              child: const Text('Ok'),
-            ),
-          ],
-        ),
+        builder: (context) => Platform.isAndroid
+            ? AlertDialog(
+                title: Text('invalid inputs!'),
+                icon: Icon(Icons.error),
+                content: Text('insure u have entered all write'),
+                actions: [
+                  TextButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: const Text('Ok'),
+                  ),
+                ],
+              )
+            : CupertinoAlertDialog(
+                title: Text('invalid inputs!'),
+                // icon: Icon(Icons.error),
+                content: Text('insure u have entered all write'),
+                actions: [
+                  TextButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: const Text('Ok'),
+                  ),
+                ],
+              ),
       );
       return;
     }
